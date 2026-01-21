@@ -110,7 +110,11 @@ El frontend estará disponible en http://localhost:4200
 
 ## API Endpoints
 
+### Con Docker Compose
 Base URL: `http://localhost:3003/bp/products`
+
+### En Desarrollo Local
+Base URL: `http://localhost:3002/bp/products`
 
 ### Obtener todos los productos
 ```

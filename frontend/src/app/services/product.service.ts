@@ -9,14 +9,18 @@ import { Product, ProductResponse } from '../models/product.interface';
 export class ProductService {
   private getApiUrl(): string {
     if (typeof window !== 'undefined') {
-      // En desarrollo local (puerto 4201 o 4200)
       const port = window.location.port;
       const hostname = window.location.hostname;
-      if (port === '4210' || port === '8080' || port === '4201' || port === '4200' || (hostname === 'localhost' && port === '')) {
-        return 'http://localhost:3003/bp/products';
+      // En Docker (puerto 4210) usar el proxy de nginx
+      if (port === '4210' || port === '8080') {
+        return '/api/bp/products';
+      }
+      // En desarrollo local (puerto 4200, 4201) conectar directamente al backend
+      if (port === '4200' || port === '4201' || (hostname === 'localhost' && port === '')) {
+        return 'http://localhost:3002/bp/products';
       }
     }
-    // En producción (Docker) usar el proxy de nginx
+    // Por defecto usar el proxy de nginx
     return '/api/bp/products';
   }
 
