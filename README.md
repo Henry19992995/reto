@@ -263,4 +263,6 @@ ISC
 
 ## Autor
 
+**Henry Miño**
+
 Desarrollado como parte de un ejercicio técnico.
